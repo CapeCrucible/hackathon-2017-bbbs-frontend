@@ -1,0 +1,13 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - aws s3 cp --recursive src/ s3://$WEBSITE_S3_BUCKET/src/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - sed -i -e "s|assets/|$WEBSITE_S3_PREFIX/src/assets/|g" src/index.html
+      - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.json
+
+artifacts:
+  type: zip
+  files:
+    - template-export.json
