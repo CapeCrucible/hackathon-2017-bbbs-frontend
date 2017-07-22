@@ -1,8 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: /app.js
     destination: /home/ec2-user/node-website
+  - source: /package.json
+    destination: /home/ec2-user/node-website
+  - source: /src/
+    destination: /home/ec2-user/node-website/public
 hooks:
   AfterInstall:
     - location: scripts/install_dependencies
