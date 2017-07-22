@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: lightgray;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.form-row md-input-container {
+  flex: 1;
+}
+
+.form-row md-select {
+  flex: 1;
+}

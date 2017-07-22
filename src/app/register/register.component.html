@@ -1,0 +1,65 @@
+<md-card>
+  <md-card-title>Register</md-card-title>
+
+  <md-card-content>
+    <form class="register-form" (submit)="register()">
+
+      <div class="form-row">
+        <md-input-container class="full-width">
+          <input type="email" mdInput placeholder="Email Address">
+        </md-input-container>
+      </div>
+
+      <div class="form-row">
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Username">
+        </md-input-container>
+      </div>
+
+      <div class="form-row">
+        <md-input-container>
+          <input type="password" mdInput placeholder="Password">
+        </md-input-container>
+        <md-input-container>
+          <input type="password" mdInput placeholder="Confirm Password">
+        </md-input-container>
+      </div>
+
+      <div class="form-row">
+        <md-input-container>
+          <input mdInput placeholder="First Name">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="Last Name">
+        </md-input-container>
+      </div>
+
+      <div class="form-row">
+        <md-input-container>
+          <input mdInput placeholder="Address">
+        </md-input-container>
+      </div>
+      <div class="form-row">
+        <md-input-container>
+          <input mdInput placeholder="Address Line 2">
+        </md-input-container>
+      </div>
+      <div class="form-row">
+        <md-input-container>
+          <input mdInput placeholder="City">
+        </md-input-container>
+
+        <app-state-picker [control]="stateControl"></app-state-picker>
+
+        <md-input-container>
+          <input mdInput #zipCode maxlength="5" placeholder="ZIP Code">
+          <md-hint align="end">{{ zipCode.value.length }} / 5</md-hint>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button (click)="register()">Register</button>
+  </md-card-actions>
+</md-card>
