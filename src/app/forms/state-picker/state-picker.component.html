@@ -1,0 +1,9 @@
+<md-input-container>
+  <input mdInput placeholder="State" [mdAutocomplete]="state_picker" [formControl]="stateControl">
+</md-input-container>
+
+<md-autocomplete #state_picker="mdAutocomplete">
+  <md-option *ngFor="let state of filteredStates | async" [value]="state.name">
+    {{ state.name }}
+  </md-option>
+</md-autocomplete>
