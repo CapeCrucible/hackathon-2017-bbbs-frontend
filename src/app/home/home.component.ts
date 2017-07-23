@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpWrapper } from '../http-wrapper.service';
 import { environment } from '../../environments/environment';
 import { LoginRequest } from './login.request';
+import { UserAccount } from '../user/user-account.model';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { LoginRequest } from './login.request';
 export class HomeComponent implements OnInit {
 private baseUrl: string;
   loginForm: FormGroup;
+  user: UserAccount;
 
   constructor(private http: HttpWrapper, private formBuilder: FormBuilder) {
     this.baseUrl = environment.apiUrl;
@@ -32,7 +34,7 @@ private baseUrl: string;
       }
     };
 
-    this.http.post(this.baseUrl + 'Login', request).subscribe();
+    this.http.post<UserAccount>(this.baseUrl + 'Login', request).subscribe(reply => this.user = reply);
     console.log(this.baseUrl + 'Login', request);
   }
 }
