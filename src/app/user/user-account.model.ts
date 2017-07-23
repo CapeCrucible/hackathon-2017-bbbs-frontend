@@ -6,4 +6,5 @@ export interface UserAccount {
   firstName: string;
   lastName: string;
   userTypeId: UserType;
+  age: number;
 }
