@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
         zipCode: this.regForm.controls['zipCode'].value
       },
       contactInfo: {
+        userId: 1234, // This shouldn't be required but for some reason it is
         email: this.regForm.controls['email'].value,
         phoneNumber: '5551234567'
       },
