@@ -4,5 +4,5 @@ export interface Address {
   streetLine2: string;
   city: string;
   state: string;
-  zipCode: string;
+  zip: string;
 }
