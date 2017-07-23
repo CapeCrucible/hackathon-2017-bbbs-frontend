@@ -1,3 +1,24 @@
-<p>
-  home works!
-</p>
+<md-card>
+  <md-card-title>Big Brothers And Big Sisters</md-card-title>
+
+  <md-card-content>
+    <form [formGroup]="loginForm" class="login-form" (submit)="login()">
+
+      <div class="form-row">
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Username" formControlName="username">
+        </md-input-container>
+      </div>
+
+      <div class="form-row">
+        <md-input-container>
+          <input type="password" mdInput placeholder="Password" formControlName="password">
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button type="submit" (click)="login()">Login</button>
+  </md-card-actions>
+</md-card>
