@@ -4,6 +4,7 @@ import { UserAccount } from '../user/user-account.model';
 import { LoginService } from '../login.service';
 import { LoginRequest } from '../login.request';
 import { Router } from '@angular/router';
+import { UserType } from '../user/user-type.enum';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +41,9 @@ export class HomeComponent implements OnInit {
 
   loginCallback(router, user: UserAccount) {
     console.log(user);
+    if (user.userTypeId === UserType.Big) {
+      router.navigate(['user-details-multiple', user]);
+    }
     router.navigate(['user-details', user]);
   }
 }

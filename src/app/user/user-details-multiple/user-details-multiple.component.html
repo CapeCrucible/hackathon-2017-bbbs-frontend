@@ -1,0 +1,103 @@
+<div class="split-container">
+  <md-card>
+    <md-card-title>Parent Details</md-card-title>
+    <md-card-content>
+      <md-list>
+        <h3 md-subheader>Contact Info</h3>
+        <md-list-item>
+          <p>
+            <strong> Name: &nbsp;</strong>
+            {{ consolidatedParent?.user.firstName }} {{ consolidatedParent?.user.lastName }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Username: &nbsp;</strong>
+            {{consolidatedParentuser?.user.username }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Email: &nbsp;</strong>
+            {{ consolidatedParent?.contactInfo.email }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Phone Number: &nbsp;</strong>
+            {{ consolidatedParent?.contactInfo.phoneNumber }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Address: &nbsp;</strong>
+            <app-address [address]="consolidatedParent?.address"></app-address>
+          </p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+
+        <h3 md-subheader>Interests</h3>
+        <md-list-item>
+      <app-interest-list [interests]="consolidatedParent?.interests"></app-interest-list>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>
+<div class="split-container">
+  <md-card>
+    <md-card-title>Little Details</md-card-title>
+    <md-card-content>
+      <md-list>
+        <h3 md-subheader>Contact Info</h3>
+        <md-list-item>
+          <p>
+            <strong> Name: &nbsp;</strong>
+            {{ consolidatedLittle?.user.firstName }} {{ consolidatedLittle?.user.lastName }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Username: &nbsp;</strong>
+            {{consolidatedLittleuser?.user.username }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Email: &nbsp;</strong>
+            {{ consolidatedLittle?.contactInfo.email }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Phone Number: &nbsp;</strong>
+            {{ consolidatedLittle?.contactInfo.phoneNumber }}
+          </p>
+        </md-list-item>
+
+        <md-list-item>
+          <p>
+            <strong> Address: &nbsp;</strong>
+            <app-address [address]="consolidatedLittle?.address"></app-address>
+          </p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+
+        <h3 md-subheader>Interests</h3>
+        <md-list-item>
+      <app-interest-list [interests]="consolidatedLittle?.interests"></app-interest-list>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>
+

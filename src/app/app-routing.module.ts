@@ -7,6 +7,7 @@ import { CreateMatchComponent } from './match/create-match/create-match.componen
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchDetailsComponent } from './match/match-details/match-details.component';
+import { UserDetailsMultipleComponent } from './user/user-details-multiple/user-details-multiple.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'matches/create', component: CreateMatchComponent},
   {path: 'matches/:id', component: MatchDetailsComponent},
   {path: 'user-details', component: UserDetailsComponent},
+  {path: 'user-details-multiple', component: UserDetailsMultipleComponent },
   {path: 'help', component: HelpComponent},
 ];
 
