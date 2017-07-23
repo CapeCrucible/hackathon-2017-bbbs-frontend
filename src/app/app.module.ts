@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdAutocompleteModule,
   MdButtonModule,
-  MdCardModule,
+  MdCardModule, MdGridListModule,
   MdIconModule,
   MdInputModule,
   MdMenuModule,
@@ -22,6 +22,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StatePickerComponent } from './forms/state-picker/state-picker.component';
 import { HttpWrapper } from './http-wrapper.service';
 import { HelpComponent } from './help/help.component';
+import { MatchComponent } from './match/match.component';
+import { UserListComponent } from './match/user-list/user-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,9 +34,12 @@ import { HelpComponent } from './help/help.component';
     NavbarComponent,
     StatePickerComponent,
     HelpComponent,
+    MatchComponent,
+    UserListComponent,
   ],
   imports: [
     AppRoutingModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,6 +53,7 @@ import { HelpComponent } from './help/help.component';
     MdInputModule,
     MdSelectModule,
     MdAutocompleteModule,
+    MdGridListModule,
   ],
   providers: [
     HttpWrapper,

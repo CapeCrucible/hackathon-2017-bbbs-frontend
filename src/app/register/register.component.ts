@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpWrapper } from '../http-wrapper.service';
 import { environment } from '../../environments/environment';
-import { RegisterAccountRequest } from './register-account.request';
+import { ConsolidatedUserInfo } from '../user/consolidated-user-info.model';
 import { UserType } from '../user/user-type.enum';
 import { getCode } from '../forms/state-picker/state.model';
 
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const request: RegisterAccountRequest = {
+    const request: ConsolidatedUserInfo = {
       user: {
         username: this.regForm.controls['username'].value,
         password: this.regForm.controls['password'].value,
