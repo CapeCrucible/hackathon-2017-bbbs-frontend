@@ -36,12 +36,11 @@ export class RegisterComponent implements OnInit {
       streetLine2: '',
       city: '',
       statePicker: '',
-      zipCode: '',
+      zip: '',
     });
   }
 
   register() {
-    console.log(JSON.stringify(this.interestsControl.value));
     const request: ConsolidatedUserInfo = {
       user: {
         userName: this.regForm.controls['userName'].value,
