@@ -34,6 +34,7 @@ import { ContactInfoComponent } from './user/contact-info/contact-info.component
 import { InterestListComponent } from './user/interest-list/interest-list.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchDetailsComponent } from './match/match-details/match-details.component';
+import { InterestSelectorComponent } from './register/interest-selector/interest-selector.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { MatchDetailsComponent } from './match/match-details/match-details.compo
     InterestListComponent,
     MatchListComponent,
     MatchDetailsComponent,
+    InterestSelectorComponent,
   ],
   imports: [
     AppRoutingModule,

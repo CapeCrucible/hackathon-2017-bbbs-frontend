@@ -13,6 +13,7 @@ export function getCode(name: string): string {
   return code;
 }
 
+
 export const STATES: State[] = [
   {code: 'AL', name: 'Alabama'},
   {code: 'AK', name: 'Alaska'},

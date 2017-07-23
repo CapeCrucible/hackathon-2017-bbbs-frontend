@@ -2,6 +2,7 @@
   <span
     class="interest"
     *ngFor="let interest of interests; let i = index"
+    (click)="select(interest)"
   >
     {{ interest.interestName }}
   </span>

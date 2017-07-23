@@ -15,10 +15,12 @@ export class RegisterComponent implements OnInit {
   private baseUrl: string;
   regForm: FormGroup;
   stateControl: FormControl;
+  interestsControl: FormControl;
 
   constructor(private http: HttpWrapper, private formBuilder: FormBuilder) {
     this.baseUrl = environment.apiUrl;
     this.stateControl = new FormControl();
+    this.interestsControl = new FormControl();
   }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class RegisterComponent implements OnInit {
       password: '',
       firstName: '',
       lastName: '',
+      age: '',
       streetLine1: '',
       streetLine2: '',
       city: '',
@@ -43,6 +46,7 @@ export class RegisterComponent implements OnInit {
         password: this.regForm.controls['password'].value,
         firstName: this.regForm.controls['firstName'].value,
         lastName: this.regForm.controls['lastName'].value,
+        age: this.regForm.controls['age'].value,
         userTypeId: UserType.Little
       },
       address: {
@@ -56,7 +60,7 @@ export class RegisterComponent implements OnInit {
         email: this.regForm.controls['email'].value,
         phoneNumber: '555-123-4567'
       },
-      interests: []
+      interests: this.interestsControl.value
     };
 
     this.http.post(this.baseUrl + 'User/CreateConsolidatedUser', request).subscribe();
