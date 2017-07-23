@@ -1,0 +1,12 @@
+.match-container {
+  display: flex;
+}
+
+.match-container md-card {
+  flex: 1;
+  margin-right: 2em;
+}
+
+.match-container md-card:last-of-type {
+  margin-right: 0;
+}
