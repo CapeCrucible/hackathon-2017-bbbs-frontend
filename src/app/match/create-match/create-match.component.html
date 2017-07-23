@@ -1,3 +1,9 @@
+<div class="split-container">
+  <button md-raised-button class="full-width" [routerLink]="['/matches']">
+    View all Matches
+  </button>
+</div>
+
 <div class="split-container" *ngIf="selectedBig && selectedLittle">
   <button md-raised-button class="full-width" (click)="createMatch()">
     Create Match!
@@ -16,15 +22,16 @@
   </md-card>
 
   <md-card *ngIf="selectedLittle">
-    <md-card-title class="flex">
-      <span>Little - {{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</span>
-      <span class="fill-remaining-space"></span>
-      <span>
+    <md-card-title>
+      <div class="flex">
+        <span>Little - {{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</span>
+        <span class="fill-remaining-space"></span>
+        <span>
         <button md-button md-mini-fab (click)="deselectLittle()">
           <md-icon>close</md-icon>
         </button>
       </span>
-      <span></span>
+      </div>
     </md-card-title>
     <md-card-content>
       <div class="split-container">
@@ -70,14 +77,15 @@
 
   <md-card *ngIf="selectedBig">
     <md-card-title class="flex">
-      <span>Big - {{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</span>
-      <span class="fill-remaining-space"></span>
-      <span>
+      <div class="flex">
+        <span>Big - {{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</span>
+        <span class="fill-remaining-space"></span>
+        <span>
         <button md-button md-mini-fab (click)="deselectBig()">
           <md-icon>close</md-icon>
         </button>
       </span>
-      <span></span>
+      </div>
     </md-card-title>
     <md-card-content>
       <div class="big-container">

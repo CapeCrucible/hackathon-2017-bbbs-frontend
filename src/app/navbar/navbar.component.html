@@ -11,6 +11,7 @@
 
 <md-menu #appMenu="mdMenu">
   <button md-menu-item routerLink="/register"> Register</button>
+  <button md-menu-item routerLink="/matches"> Matches</button>
   <button md-menu-item routerLink="/help"> Help</button>
   <button *ngIf="isLoggedIn()" md-menu-item routerLink="/" (click)="logout()"> Logout </button>
 </md-menu>

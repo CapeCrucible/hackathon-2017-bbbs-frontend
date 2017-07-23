@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   login() {
     const request: LoginRequest = {
       loginCredentials: {
-        username: this.loginForm.controls['username'].value,
+        username: this.loginForm.controls['userName'].value,
         password: this.loginForm.controls['password'].value
       }
     };

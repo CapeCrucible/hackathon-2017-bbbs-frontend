@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
   register() {
     const request: ConsolidatedUserInfo = {
       user: {
-        username: this.regForm.controls['username'].value,
+        userName: this.regForm.controls['userName'].value,
         password: this.regForm.controls['password'].value,
         firstName: this.regForm.controls['firstName'].value,
         lastName: this.regForm.controls['lastName'].value,

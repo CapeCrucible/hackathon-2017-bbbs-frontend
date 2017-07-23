@@ -1,3 +1,35 @@
-<p>
-  match-list works!
-</p>
+<div class="split-container">
+  <md-card>
+    <md-card-title>
+      <div class="flex">
+        <span>All Matches</span>
+        <span class="fill-remaining-space"></span>
+        <a md-raised-button [routerLink]="['create']">Create a Match</a>
+      </div>
+    </md-card-title>
+    <md-card-content>
+      <div *ngFor="let match of matches" class="list-item">
+        <md-card (click)="onMatchSelected(match)" class="clickable">
+          <div class="split-container">
+            <div class="split-container-item">
+              <p>
+                <strong>Little: </strong>
+                <span>{{ match.little.firstName }} {{ match.little.lastName }}</span>
+              </p>
+              <p>
+                <strong>Parent: </strong>
+                <span>{{ match.parent.firstName }} {{ match.parent.lastName }}</span>
+              </p>
+            </div>
+            <div class="split-container-item">
+              <p>
+                <strong>Big: </strong>
+                <span>{{ match.big.firstName }} {{ match.big.lastName }}</span>
+              </p>
+            </div>
+          </div>
+        </md-card>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>
