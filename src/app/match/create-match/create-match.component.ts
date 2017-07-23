@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpWrapper } from '../http-wrapper.service';
-import { UserAccount } from '../user/user-account.model';
+import { HttpWrapper } from '../../http-wrapper.service';
+import { UserAccount } from '../../user/user-account.model';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { environment } from '../../environments/environment';
-import { ConsolidatedUserInfo } from '../user/consolidated-user-info.model';
+import { environment } from '../../../environments/environment';
+import { ConsolidatedUserInfo } from '../../user/consolidated-user-info.model';
+import { Interest } from '../../user/interest.model';
 
 @Component({
   selector: 'app-match',
-  templateUrl: './match.component.html',
-  styleUrls: ['./match.component.scss']
+  templateUrl: './create-match.component.html',
+  styleUrls: ['./create-match.component.scss']
 })
-export class MatchComponent implements OnInit {
+export class CreateMatchComponent implements OnInit {
   private baseUrl: string;
   bigs: ReplaySubject<UserAccount[]>;
   littles: ReplaySubject<UserAccount[]>;
@@ -18,6 +19,8 @@ export class MatchComponent implements OnInit {
   selectedBig: ConsolidatedUserInfo;
   selectedLittle: ConsolidatedUserInfo;
   selectedLittleParent: ConsolidatedUserInfo;
+
+  sharedInterests: Interest[];
 
   constructor(private httpWrapper: HttpWrapper) {
     this.baseUrl = environment.apiUrl;
@@ -37,13 +40,19 @@ export class MatchComponent implements OnInit {
   onBigSelected(user: UserAccount): void {
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'User/GetConsolidatedUserInfo/' + user.id)
-      .subscribe(info => this.selectedBig = info);
+      .subscribe(info => {
+        this.selectedBig = info;
+        this.loadSharedInterests();
+      });
   }
 
   onLittleSelected(user: UserAccount): void {
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'User/GetConsolidatedUserInfo/' + user.id)
-      .subscribe(info => this.selectedLittle = info);
+      .subscribe(info => {
+        this.selectedLittle = info;
+        this.loadSharedInterests();
+      });
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'UserMapping/FindParentForLittle/' + user.id)
       .subscribe(info => this.selectedLittleParent = info);
@@ -64,6 +73,19 @@ export class MatchComponent implements OnInit {
       bigId: this.selectedBig.user.id
     };
 
-    this.httpWrapper.post(this.baseUrl + 'UserMapping/CreateBigLittleParentMap', request).subscribe();
+    this.httpWrapper
+      .post(this.baseUrl + 'UserMapping/CreateBigLittleParentMap', request).subscribe();
+  }
+
+  loadSharedInterests() {
+    if (!this.selectedBig && !this.selectedLittle) {
+      this.sharedInterests = [];
+      return;
+    }
+
+    this.httpWrapper
+      .get<Interest[]>(this.baseUrl + 'Interest/GetSharedInterests/'
+        + this.selectedBig.user.id + '/' + this.selectedLittle.user.id)
+      .subscribe(interests => this.sharedInterests = interests);
   }
 }

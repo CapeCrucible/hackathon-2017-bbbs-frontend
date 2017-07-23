@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
-import { MatchComponent } from './match/match.component';
+import { CreateMatchComponent } from './match/create-match/create-match.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { MatchListComponent } from './match/match-list/match-list.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'match', component: MatchComponent},
+  {path: 'matches', component: MatchListComponent},
+  {path: 'matches/create', component: CreateMatchComponent},
   {path: 'user-details', component: UserDetailsComponent},
   {path: 'help', component: HelpComponent},
 ];

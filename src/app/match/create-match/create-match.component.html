@@ -1,3 +1,9 @@
+<div class="split-container" *ngIf="selectedBig && selectedLittle">
+  <button md-raised-button class="full-width" (click)="createMatch()">
+    Create Match!
+  </button>
+</div>
+
 <div class="split-container">
   <md-card *ngIf="!selectedLittle">
     <md-card-title>Select a little</md-card-title>
@@ -24,11 +30,9 @@
       <div class="split-container">
         <div class="split-container-item">
           <img src="http://via.placeholder.com/400" class="little-match-image">
-          <span>{{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName }}</span>
         </div>
         <div class="split-container-item">
           <img src="http://via.placeholder.com/400" class="little-match-image">
-          <span>{{ selectedLittleParent?.user?.firstName }} {{ selectedLittleParent?.user?.lastName }}</span>
         </div>
       </div>
     </md-card-content>
@@ -79,7 +83,6 @@
       <div class="big-container">
         <div class="big-container-item">
           <img src="http://via.placeholder.com/400" class="big-match-image"><br>
-          <span>{{ selectedBig.user.firstName }} {{ selectedBig.user.lastName }}</span>
         </div>
       </div>
     </md-card-content>
@@ -93,7 +96,15 @@
   </md-card>
 </div>
 
+<div class="split-container" *ngIf="selectedBig && selectedLittle">
+  <md-card>
+    <h3>Shared Interests</h3>
+    <app-interest-list [interests]="sharedInterests"></app-interest-list>
+  </md-card>
+</div>
 
-<button md-raised-button *ngIf="selectedLittle && selectedBig" style="width: 100%; margin-top: 2em;"
-        (click)="createMatch()">Create Match!
-</button>
+<div class="split-container" *ngIf="selectedBig && selectedLittle">
+  <button md-raised-button class="full-width" (click)="createMatch()">
+    Create Match!
+  </button>
+</div>

@@ -1,10 +1,11 @@
 .split-container {
   display: flex;
+  margin-bottom: 1em;
 }
 
 .split-container md-card {
   flex: 1;
-  margin-right: 2em;
+  margin-right: 1em;
 }
 
 .split-container md-card:last-of-type {
@@ -43,4 +44,8 @@
 
 .flex {
   display: flex;
+}
+
+.full-width {
+  width: 100%;
 }
