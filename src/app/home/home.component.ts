@@ -24,7 +24,7 @@ private baseUrl: string;
     });
   }
 
-  register() {
+  login() {
     const request: LoginRequest = {
       loginCredentials: {
         username: this.loginForm.controls['username'].value,
