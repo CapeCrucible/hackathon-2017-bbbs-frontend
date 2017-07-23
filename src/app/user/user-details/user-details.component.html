@@ -35,11 +35,7 @@
         <md-list-item>
           <p>
             <strong> Address: &nbsp;</strong>
-            {{ user?.address.streetLine1 }} &nbsp;
-            {{ user?.address.streetLine2 }} &nbsp;
-            {{ user?.address.city }} &nbsp;
-            {{ user?.address.state }} &nbsp;
-            {{ user?.address.zipCode }}
+            <app-address [address]="user?.address"></app-address>
           </p>
         </md-list-item>
 

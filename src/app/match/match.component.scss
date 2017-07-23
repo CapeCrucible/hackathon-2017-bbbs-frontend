@@ -11,6 +11,36 @@
   margin-right: 0;
 }
 
+.split-container-item {
+  flex: 1;
+}
+
+.split-container-item:last-of-type {
+  flex: 1;
+  padding-left: 1em;
+}
+
+.little-match-image {
+  width: 100%;
+}
+
+.big-match-image {
+  width: 100%;
+  align-self: center;
+}
+
+.big-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;;
+  width: 100%;
+}
+
+.big-container-item {
+  max-width: 50%;
+  flex: 1;
+}
+
 .flex {
   display: flex;
 }
