@@ -11,6 +11,10 @@ export class LoginServiceService {
     this.user = user;
   }
 
+  logout() {
+    this.user = null;
+  }
+
   getUser() {
     return !!this.user ? this.user : null;
   }
