@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
       password: '',
       firstName: '',
       lastName: '',
-      addressLine1: '',
-      addressLine2: '',
+      streetLine1: '',
+      streetLine2: '',
       city: '',
       statePicker: '',
       zipCode: '',
@@ -46,8 +46,8 @@ export class RegisterComponent implements OnInit {
         userType: UserType.Little
       },
       address: {
-        addressLine1: this.regForm.controls['addressLine1'].value,
-        addressLine2: this.regForm.controls['addressLine2'].value,
+        streetLine1: this.regForm.controls['streetLine1'].value,
+        streetLine2: this.regForm.controls['streetLine2'].value,
         city: this.regForm.controls['city'].value,
         state: {
           code: getCode(this.stateControl.value),

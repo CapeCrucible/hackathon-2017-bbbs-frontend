@@ -17,6 +17,7 @@ export class MatchComponent implements OnInit {
 
   selectedBig: ConsolidatedUserInfo;
   selectedLittle: ConsolidatedUserInfo;
+  selectedLittleParent: ConsolidatedUserInfo;
 
   constructor(private httpWrapper: HttpWrapper) {
     this.baseUrl = environment.apiUrl;
@@ -43,10 +44,14 @@ export class MatchComponent implements OnInit {
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'User/GetConsolidatedUserInfo/' + user.id)
       .subscribe(info => this.selectedLittle = info);
+    this.httpWrapper
+      .get<ConsolidatedUserInfo>(this.baseUrl + 'UserMapping/FindParentForLittle/' + user.id)
+      .subscribe(info => this.selectedLittleParent = info);
   }
 
   deselectLittle() {
     this.selectedLittle = null;
+    this.selectedLittleParent = null;
   }
 
   deselectBig() {

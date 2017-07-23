@@ -11,7 +11,7 @@
 
   <md-card *ngIf="selectedLittle">
     <md-card-title class="flex">
-      <span>Little</span>
+      <span>Little - {{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</span>
       <span class="fill-remaining-space"></span>
       <span>
         <button md-button md-mini-fab (click)="deselectLittle()">
@@ -20,7 +20,36 @@
       </span>
       <span></span>
     </md-card-title>
-    <md-card-subtitle>{{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</md-card-subtitle>
+    <img md-card-image src="http://via.placeholder.com/400">
+    <md-card-content>
+      <h3>Interests</h3>
+      <p>
+        <span *ngFor="let interest of selectedLittle.interests; let i = index">
+          {{ interest.interestName }}{{ (i != selectedLittle.interests.length - 1) ? ',' : '' }}
+        </span>
+        <em *ngIf="selectedLittle.interests === null || selectedLittle.interests.length === 0">No interests provided</em>
+      </p>
+      <h3>Little Contact Information</h3>
+      <p>Email: {{ selectedLittle.contactInfo?.email }}</p>
+      <p>Phone Number: {{ selectedLittle.contactInfo?.phoneNumber }}</p>
+      <p *ngIf="selectedLittle.address">
+        {{ selectedLittle.address?.streetLine1 }}<br>
+        {{ selectedLittle.address?.streetLine2 }}<br *ngIf="selectedLittle.address?.streetLine2">
+        {{ selectedLittle.address?.city }}, {{ selectedLittle.address?.state }} {{ selectedLittle.address?.zipCode }}
+      </p>
+      <h3>Parent Contact Information</h3>
+      <div *ngIf="selectedLittleParent">
+        <p>Name: {{ selectedLittleParent.user?.firstName }} {{ selectedLittleParent.user?.lastName }}</p>
+        <p>Email: {{ selectedLittleParent.contactInfo?.email }}</p>
+        <p>Phone Number: {{ selectedLittleParent.contactInfo?.phoneNumber }}</p>
+        <p *ngIf="selectedLittleParent.address">
+          {{ selectedLittleParent.address?.streetLine1 }}<br>
+          {{ selectedLittleParent.address?.streetLine2 }}<br *ngIf="selectedLittleParent.address?.streetLine2">
+          {{ selectedLittleParent.address?.city }}, {{ selectedLittleParent.address?.state }} {{
+          selectedLittleParent.address?.zipCode }}
+        </p>
+      </div>
+    </md-card-content>
   </md-card>
 
   <md-card *ngIf="!selectedBig">
@@ -35,7 +64,7 @@
 
   <md-card *ngIf="selectedBig">
     <md-card-title class="flex">
-      <span>Big</span>
+      <span>Big - {{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</span>
       <span class="fill-remaining-space"></span>
       <span>
         <button md-button md-mini-fab (click)="deselectBig()">
@@ -44,6 +73,23 @@
       </span>
       <span></span>
     </md-card-title>
-    <md-card-subtitle>{{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</md-card-subtitle>
+    <img md-card-image src="http://via.placeholder.com/400">
+    <md-card-content>
+      <h3>Interests</h3>
+      <p>
+        <span *ngFor="let interest of selectedBig.interests; let i = index">
+          {{ interest.interestName }}{{ (i != selectedBig.interests.length - 1) ? ',' : '' }}
+        </span>
+        <em *ngIf="selectedBig.interests === null || selectedBig.interests.length === 0">No interests provided</em>
+      </p>
+      <h3>Contact Information</h3>
+      <p>Email: {{ selectedBig.contactInfo?.email }}</p>
+      <p>Phone Number: {{ selectedBig.contactInfo?.phoneNumber }}</p>
+      <p *ngIf="selectedBig .address">
+        {{ selectedBig.address?.streetLine1 }}<br>
+        {{ selectedBig.address?.streetLine2 }}<br *ngIf="selectedBig.address?.streetLine2">
+        {{ selectedBig.address?.city }}, {{ selectedBig.address?.state }} {{ selectedBig.address?.zipCode }}
+      </p>
+    </md-card-content>
   </md-card>
 </div>
