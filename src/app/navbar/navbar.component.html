@@ -2,7 +2,7 @@
 
   <a md-button routerLink="/">Match App</a>
   <span class="fill-remaining-space"></span>
-  <button md-button [mdMenuTriggerFor]="appMenu">
+  <button *ngIf="isLoggedIn()" md-button [mdMenuTriggerFor]="appMenu">
     <md-icon>menu</md-icon>
     Menu
   </button>
@@ -12,5 +12,5 @@
 <md-menu #appMenu="mdMenu">
   <button md-menu-item routerLink="/register"> Register</button>
   <button md-menu-item routerLink="/help"> Help</button>
-  <button md-menu-item routerLink="/" (click)="logout()"> Logout </button>
+  <button *ngIf="isLoggedIn()" md-menu-item routerLink="/" (click)="logout()"> Logout </button>
 </md-menu>

@@ -20,5 +20,4 @@ export class LoginService {
   getUser() {
     return !!this.user ? this.user : null;
   }
-
 }
