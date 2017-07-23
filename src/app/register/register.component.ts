@@ -4,6 +4,7 @@ import { HttpWrapper } from '../http-wrapper.service';
 import { environment } from '../../environments/environment';
 import { RegisterAccountRequest } from './register-account.request';
 import { UserType } from '../user/user-type.enum';
+import { getCode } from "../forms/state-picker/state.model";
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,7 @@ export class RegisterComponent implements OnInit {
       addressLine1: [''],
       addressLine2: [''],
       city: [''],
-      stateControl: [''],
+      statePicker: [''],
       zipCode: [''],
     });
   }
@@ -49,8 +50,8 @@ export class RegisterComponent implements OnInit {
         addressLine2: this.regForm.controls['addressLine2'].value,
         city: this.regForm.controls['city'].value,
         state: {
-          code: 'MO',
-          name: 'Missouri'
+          code: getCode(this.regFormControl.value),
+          name: this.regFormControl.value
         },
         zipCode: this.regForm.controls['zipCode'].value
       },

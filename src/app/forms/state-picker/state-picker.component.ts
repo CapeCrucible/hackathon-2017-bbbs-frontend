@@ -13,7 +13,7 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./state-picker.component.css']
 })
 export class StatePickerComponent implements OnInit {
-  @Input('control') stateControl: FormControl;
+  @Input('control') regFormControl: FormControl;
   filteredStates: Observable<State[]>;
   states: State[];
 
@@ -22,14 +22,13 @@ export class StatePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stateControl.valueChanges
+    this.regFormControl.valueChanges
       .subscribe(name => {
         return this.filteredStates = Observable.of(this.filterStates(name));
       });
   }
 
   private filterStates(val: string): State[] {
-    console.log(val);
     return val ? this.states.filter(s => s.name.toLowerCase().indexOf(val.toLowerCase()) === 0)
       : this.states;
   }

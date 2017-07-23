@@ -3,6 +3,16 @@ export interface State {
   name: string;
 }
 
+export function getCode(name: string): string {
+  let code: string = null;
+  STATES.forEach(state => {
+    if (state.name === name) {
+      code = state.code;
+    }
+  });
+  return code;
+}
+
 export const STATES: State[] = [
   {code: 'AL', name: 'Alabama'},
   {code: 'AK', name: 'Alaska'},
