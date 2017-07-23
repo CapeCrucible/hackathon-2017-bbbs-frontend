@@ -5,6 +5,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { environment } from '../../../environments/environment';
 import { ConsolidatedUserInfo } from '../../user/consolidated-user-info.model';
 import { Interest } from '../../user/interest.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-match',
@@ -22,7 +23,7 @@ export class CreateMatchComponent implements OnInit {
 
   sharedInterests: Interest[];
 
-  constructor(private httpWrapper: HttpWrapper) {
+  constructor(private httpWrapper: HttpWrapper, private router: Router) {
     this.baseUrl = environment.apiUrl;
     this.bigs = new ReplaySubject(1);
     this.littles = new ReplaySubject(1);
@@ -74,7 +75,8 @@ export class CreateMatchComponent implements OnInit {
     };
 
     this.httpWrapper
-      .post(this.baseUrl + 'UserMapping/CreateBigLittleParentMap', request).subscribe();
+      .post(this.baseUrl + 'UserMapping/CreateBigLittleParentMap', request)
+      .subscribe((thing: any) => this.router.navigate(['matches', thing.littleId]));
   }
 
   loadSharedInterests() {

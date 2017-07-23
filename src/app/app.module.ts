@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdAutocompleteModule,
   MdButtonModule,
-  MdCardModule, MdGridListModule,
+  MdCardModule,
+  MdGridListModule,
   MdIconModule,
   MdInputModule,
   MdMenuModule,
+  MdProgressSpinnerModule,
   MdSelectModule,
   MdToolbarModule
 } from '@angular/material';
@@ -31,6 +33,7 @@ import { AddressComponent } from './user/address/address.component';
 import { ContactInfoComponent } from './user/contact-info/contact-info.component';
 import { InterestListComponent } from './user/interest-list/interest-list.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
+import { MatchDetailsComponent } from './match/match-details/match-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { MatchListComponent } from './match/match-list/match-list.component';
     ContactInfoComponent,
     InterestListComponent,
     MatchListComponent,
+    MatchDetailsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,6 +69,7 @@ import { MatchListComponent } from './match/match-list/match-list.component';
     MdSelectModule,
     MdAutocompleteModule,
     MdGridListModule,
+    MdProgressSpinnerModule,
   ],
   providers: [
     HttpWrapper,

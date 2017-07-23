@@ -18,18 +18,16 @@ export class UserDetailsComponent implements OnInit {
 
   user: UserAccount;
   constructor(
-    private http: HttpWrapper,
-    private 
+    private http: HttpWrapper
   ) {
     this.baseUrl = environment.apiUrl;
   }
 
   ngOnInit() {
-      this.http.get<ConsolidatedUserInfo>(
-        this.baseUrl + 'User/GetConsolidatedUserInfo/' + this.user.id)
-      .subscribe(reply => {
-        this.consolidatedUser = reply;
-      });
-    }
+    this.http.get<ConsolidatedUserInfo>(
+      this.baseUrl + 'User/GetConsolidatedUserInfo/' + this.user.id)
+    .subscribe(reply => {
+      this.consolidatedUser = reply;
+    });
   }
 }

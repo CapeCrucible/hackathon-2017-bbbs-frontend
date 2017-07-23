@@ -1,0 +1,88 @@
+<div class="split-container">
+  <button md-raised-button class="full-width" [routerLink]="['/matches']">
+    View all Matches
+  </button>
+</div>
+
+<div class="big-container" *ngIf="!match">
+  <div class="flex-1" style="max-width: 10%">
+    <md-spinner></md-spinner>
+  </div>
+</div>
+
+<div class="split-container" *ngIf="match">
+  <md-card>
+    <md-card-title class="flex">
+      <span>Little - {{ match.little.user.firstName }} {{ match.little.user.lastName}}</span>
+    </md-card-title>
+    <md-card-content>
+      <div class="split-container">
+        <div class="split-container-item">
+          <img src="http://via.placeholder.com/400" class="little-match-image">
+        </div>
+        <div class="split-container-item">
+          <img src="http://via.placeholder.com/400" class="little-match-image">
+        </div>
+      </div>
+    </md-card-content>
+    <md-card-content>
+      <h3>Interests</h3>
+      <app-interest-list [interests]="match.little.interests" *ngIf="match.little"></app-interest-list>
+    </md-card-content>
+    <md-card-content>
+      <div class="split-container">
+        <div class="split-container-item">
+          <h3>Little Contact Information</h3>
+          <app-contact-info [user]="match.little.user"
+                            [contactInfo]="match.little.contactInfo"></app-contact-info>
+          <app-address [address]="match.little.address"></app-address>
+        </div>
+        <div class="split-container-item">
+          <h3>Parent Contact Information</h3>
+          <app-contact-info [user]="match.parent?.user"
+                            [contactInfo]="match.parent?.contactInfo"></app-contact-info>
+          <app-address [address]="match.parent?.address"></app-address>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title class="flex">
+      <span>Big - {{ match.big.user.firstName }} {{ match.big.user.lastName}}</span>
+    </md-card-title>
+    <md-card-content>
+      <div class="big-container">
+        <div class="big-container-item">
+          <img src="http://via.placeholder.com/400" class="big-match-image"><br>
+        </div>
+      </div>
+    </md-card-content>
+    <md-card-content>
+      <h3>Interests</h3>
+      <app-interest-list [interests]="match.big.interests"></app-interest-list>
+    </md-card-content>
+    <md-card-content>
+      <div class="split-container">
+        <div class="big-container-item">
+          <h3>Big Contact Information</h3>
+          <app-contact-info [user]="match.big.user" [contactInfo]="match.big.contactInfo"></app-contact-info>
+          <app-address [address]="match.big.address"></app-address>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>
+
+<div class="split-container" *ngIf="match">
+  <md-card>
+    <h3>Shared Interests</h3>
+    <app-interest-list [interests]="match.sharedInterests"></app-interest-list>
+  </md-card>
+</div>
+
+<div class="split-container" *ngIf="match && match.big && match.little">
+  <button md-raised-button class="full-width" (click)="unmatch()">
+    Unmatch
+  </button>
+</div>
