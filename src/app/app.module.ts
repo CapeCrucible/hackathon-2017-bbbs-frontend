@@ -25,6 +25,7 @@ import { HelpComponent } from './help/help.component';
 import { MatchComponent } from './match/match.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserListComponent } from './match/user-list/user-list.component';
+import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -59,6 +60,7 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     HttpWrapper,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
