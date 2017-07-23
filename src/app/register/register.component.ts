@@ -49,10 +49,7 @@ export class RegisterComponent implements OnInit {
         streetLine1: this.regForm.controls['streetLine1'].value,
         streetLine2: this.regForm.controls['streetLine2'].value,
         city: this.regForm.controls['city'].value,
-        state: {
-          code: getCode(this.stateControl.value),
-          name: this.stateControl.value
-        },
+        state: getCode(this.stateControl.value),
         zipCode: this.regForm.controls['zipCode'].value
       },
       contactInfo: {
