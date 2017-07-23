@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
       statePicker: '',
       zip: '',
     });
+    
   }
 
   register() {
