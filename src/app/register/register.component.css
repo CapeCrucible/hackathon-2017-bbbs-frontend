@@ -1,5 +1,5 @@
 .register-form {
   display: flex;
-  width: 500px;
+  width: 100%;
   flex-wrap: wrap;
 }

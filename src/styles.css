@@ -22,3 +22,15 @@ html, body {
 .form-row md-select {
   flex: 1;
 }
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-wrap: wrap;
+  }
+  md-input-container {
+    min-width: 300px;
+  }
+  md-card {
+    min-width: 300px;
+  }
+}
