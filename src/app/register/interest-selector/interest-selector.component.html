@@ -1,0 +1,11 @@
+<md-input-container>
+  <input mdInput placeholder="Interests" [mdAutocomplete]="interest_selector" [formControl]="inputControl" (blur)="select()">
+</md-input-container>
+
+<md-autocomplete #interest_selector="mdAutocomplete">
+  <md-option *ngFor="let interest of filteredInterests | async" [value]="interest.interestName">
+    {{ interest.interestName }}
+  </md-option>
+</md-autocomplete>
+
+<app-interest-list [interests]="selectedInterests" (interestClicked)="deselect($event)"></app-interest-list>

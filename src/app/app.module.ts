@@ -34,6 +34,7 @@ import { ContactInfoComponent } from './user/contact-info/contact-info.component
 import { InterestListComponent } from './user/interest-list/interest-list.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { MatchDetailsComponent } from './match/match-details/match-details.component';
+import { InterestSelectorComponent } from './register/interest-selector/interest-selector.component';
 import { UserDetailsMultipleComponent } from './user/user-details-multiple/user-details-multiple.component';
 
 @NgModule({
@@ -53,6 +54,7 @@ import { UserDetailsMultipleComponent } from './user/user-details-multiple/user-
     MatchListComponent,
     MatchDetailsComponent,
     UserDetailsMultipleComponent,
+    InterestSelectorComponent,
   ],
   imports: [
     AppRoutingModule,

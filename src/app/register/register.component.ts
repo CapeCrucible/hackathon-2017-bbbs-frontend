@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { ConsolidatedUserInfo } from '../user/consolidated-user-info.model';
 import { UserType } from '../user/user-type.enum';
 import { getCode } from '../forms/state-picker/state.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,25 +16,29 @@ export class RegisterComponent implements OnInit {
   private baseUrl: string;
   regForm: FormGroup;
   stateControl: FormControl;
+  interestsControl: FormControl;
 
-  constructor(private http: HttpWrapper, private formBuilder: FormBuilder) {
+  constructor(private http: HttpWrapper, private formBuilder: FormBuilder, private router: Router) {
     this.baseUrl = environment.apiUrl;
     this.stateControl = new FormControl();
+    this.interestsControl = new FormControl();
   }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group({
       email: '',
-      username: '',
+      userName: '',
       password: '',
       firstName: '',
       lastName: '',
+      age: '',
       streetLine1: '',
       streetLine2: '',
       city: '',
       statePicker: '',
-      zipCode: '',
+      zip: '',
     });
+    
   }
 
   register() {
@@ -43,22 +48,34 @@ export class RegisterComponent implements OnInit {
         password: this.regForm.controls['password'].value,
         firstName: this.regForm.controls['firstName'].value,
         lastName: this.regForm.controls['lastName'].value,
-        userTypeId: UserType.Little
+        age: this.regForm.controls['age'].value,
+        userTypeId: UserType.Big
       },
       address: {
         streetLine1: this.regForm.controls['streetLine1'].value,
         streetLine2: this.regForm.controls['streetLine2'].value,
         city: this.regForm.controls['city'].value,
         state: getCode(this.stateControl.value),
-        zipCode: this.regForm.controls['zipCode'].value
+        zip: this.regForm.controls['zip'].value
       },
       contactInfo: {
         email: this.regForm.controls['email'].value,
         phoneNumber: '555-123-4567'
       },
-      interests: []
+      interests: [
+        {
+          id: 1,
+          interestName: 'Sports'
+        },
+        {
+          id: 6,
+          interestName: 'Books'
+        }
+      ]
     };
 
-    this.http.post(this.baseUrl + 'User/CreateConsolidatedUser', request).subscribe();
+    this.http
+      .post(this.baseUrl + 'User/CreateConsolidatedUser', request)
+      .subscribe(() => this.router.navigate(['/']));
   }
 }

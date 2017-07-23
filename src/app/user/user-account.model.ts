@@ -5,5 +5,6 @@ export interface UserAccount {
   password?: string;
   firstName: string;
   lastName: string;
+  age: number;
   userTypeId: UserType;
 }
