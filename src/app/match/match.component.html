@@ -1,15 +1,49 @@
-<div class="match-container">
-  <md-card>
-    <md-card-title>Littles</md-card-title>
+<div class="split-container">
+  <md-card *ngIf="!selectedLittle">
+    <md-card-title>Select a little</md-card-title>
     <md-card-content>
-      <app-user-list [users]=""></app-user-list>
+      <app-user-list
+        [users]="littles"
+        (userSelected)="onLittleSelected($event)"
+      ></app-user-list>
     </md-card-content>
   </md-card>
 
-  <md-card>
-    <md-card-title>Bigs</md-card-title>
-    <md-card-content>
+  <md-card *ngIf="selectedLittle">
+    <md-card-title class="flex">
+      <span>Little</span>
+      <span class="fill-remaining-space"></span>
+      <span>
+        <button md-button md-mini-fab (click)="deselectLittle()">
+          <md-icon>close</md-icon>
+        </button>
+      </span>
+      <span></span>
+    </md-card-title>
+    <md-card-subtitle>{{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</md-card-subtitle>
+  </md-card>
 
+  <md-card *ngIf="!selectedBig">
+    <md-card-title>Select a big</md-card-title>
+    <md-card-content>
+      <app-user-list
+        [users]="bigs"
+        (userSelected)="onBigSelected($event)"
+      ></app-user-list>
     </md-card-content>
+  </md-card>
+
+  <md-card *ngIf="selectedBig">
+    <md-card-title class="flex">
+      <span>Big</span>
+      <span class="fill-remaining-space"></span>
+      <span>
+        <button md-button md-mini-fab (click)="deselectBig()">
+          <md-icon>close</md-icon>
+        </button>
+      </span>
+      <span></span>
+    </md-card-title>
+    <md-card-subtitle>{{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</md-card-subtitle>
   </md-card>
 </div>

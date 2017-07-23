@@ -1,5 +1,5 @@
 <div *ngFor="let user of list | async">
-  <md-card>
+  <md-card (click)="select(user)" class="clickable">
     {{ user.firstName }} {{ user.lastName }}
   </md-card>
 </div>
