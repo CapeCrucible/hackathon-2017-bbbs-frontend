@@ -16,7 +16,7 @@ import { MatchedBigLittleParentModel } from '../matched-big-little-parent.model'
 
 export class UserDetailsComponent implements OnInit {
   private baseUrl: string;
-  private consolidatedUser: ConsolidatedUserInfo;
+  consolidatedUser: ConsolidatedUserInfo;
 
   constructor(
     private http: HttpWrapper,
