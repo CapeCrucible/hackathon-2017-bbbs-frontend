@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpWrapper } from '../http-wrapper.service';
 import { environment } from '../../environments/environment';
 import { RegisterAccountRequest } from './register-account.request';
@@ -10,37 +10,52 @@ import { UserType } from '../user/user-type.enum';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  regForm: FormGroup;
   private baseUrl: string;
-  stateControl: FormControl;
+  regFormControl: FormControl;
 
-  constructor(private http: HttpWrapper) {
+  constructor(private http: HttpWrapper, private formBuilder: FormBuilder) {
     this.baseUrl = environment.apiUrl;
-    this.stateControl = new FormControl();
+    this.regFormControl = new FormControl();
   }
 
+  ngOnInit() {
+    this.regForm = this.formBuilder.group({
+      email: [''],
+      username: [''],
+      password: [''],
+      firstName: [''],
+      lastName: [''],
+      addressLine1: [''],
+      addressLine2: [''],
+      city: [''],
+      stateControl: [''],
+      zipCode: [''],
+    });
+  }
 
   register() {
     const request: RegisterAccountRequest = {
       user: {
-        username: 'someuser',
-        password: 'pass',
-        firstName: 'Bobby',
-        lastName: 'Bacon',
+        username: this.regForm.controls['username'].value,
+        password: this.regForm.controls['password'].value,
+        firstName: this.regForm.controls['firstName'].value,
+        lastName: this.regForm.controls['lastName'].value,
         userType: UserType.Little
       },
       address: {
-        addressLine1: '339 Broadway',
-        addressLine2: '',
-        city: 'Cape Girardeau',
+        addressLine1: this.regForm.controls['addressLine1'].value,
+        addressLine2: this.regForm.controls['addressLine2'].value,
+        city: this.regForm.controls['city'].value,
         state: {
           code: 'MO',
           name: 'Missouri'
         },
-        zipCode: '63701'
+        zipCode: this.regForm.controls['zipCode'].value
       },
       contactInfo: {
-        email: 'bbbs@capecrucible.org',
+        email: this.regForm.controls['email'].value,
         phoneNumber: '5551234567'
       },
       interests: [
@@ -53,6 +68,6 @@ export class RegisterComponent {
       ]
     };
 
-    this.http.post(this.baseUrl, request);
+    this.http.post(this.baseUrl + 'CreateConsolidatedUser', request);
   }
 }

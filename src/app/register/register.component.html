@@ -2,23 +2,23 @@
   <md-card-title>Register</md-card-title>
 
   <md-card-content>
-    <form class="register-form" (submit)="register()">
+    <form [formGroup]="regForm" class="register-form" (submit)="register()">
 
       <div class="form-row">
         <md-input-container class="full-width">
-          <input type="email" mdInput placeholder="Email Address">
+          <input type="email" mdInput placeholder="Email Address" formControlName="email">
         </md-input-container>
       </div>
 
       <div class="form-row">
         <md-input-container class="full-width">
-          <input mdInput placeholder="Username">
+          <input mdInput placeholder="Username" formControlName="username">
         </md-input-container>
       </div>
 
       <div class="form-row">
         <md-input-container>
-          <input type="password" mdInput placeholder="Password">
+          <input type="password" mdInput placeholder="Password" formControlName="password">
         </md-input-container>
         <md-input-container>
           <input type="password" mdInput placeholder="Confirm Password">
@@ -27,32 +27,32 @@
 
       <div class="form-row">
         <md-input-container>
-          <input mdInput placeholder="First Name">
+          <input mdInput placeholder="First Name" formControlName="firstName">
         </md-input-container>
         <md-input-container>
-          <input mdInput placeholder="Last Name">
+          <input mdInput placeholder="Last Name" formControlName="lastName">
         </md-input-container>
       </div>
 
       <div class="form-row">
         <md-input-container>
-          <input mdInput placeholder="Address">
+          <input mdInput placeholder="Address" formControlName="addressLine1">
         </md-input-container>
       </div>
       <div class="form-row">
         <md-input-container>
-          <input mdInput placeholder="Address Line 2">
+          <input mdInput placeholder="Address Line 2" formControlName="addressLine2">
         </md-input-container>
       </div>
       <div class="form-row">
         <md-input-container>
-          <input mdInput placeholder="City">
+          <input mdInput placeholder="City" formControlName="city">
         </md-input-container>
 
         <app-state-picker [control]="stateControl"></app-state-picker>
 
         <md-input-container>
-          <input mdInput #zipCode maxlength="5" placeholder="ZIP Code">
+          <input mdInput #zipCode maxlength="5" placeholder="ZIP Code" formControlName="zipCode">
           <md-hint align="end">{{ zipCode.value.length }} / 5</md-hint>
         </md-input-container>
       </div>
@@ -60,6 +60,6 @@
   </md-card-content>
 
   <md-card-actions>
-    <button md-button (click)="register()">Register</button>
+    <button md-button type="submit" (click)="register()">Register</button>
   </md-card-actions>
 </md-card>

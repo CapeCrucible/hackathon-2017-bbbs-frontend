@@ -21,6 +21,7 @@ import {
 import { NavbarComponent } from './navbar/navbar.component';
 import { StatePickerComponent } from './forms/state-picker/state-picker.component';
 import { HttpWrapper } from './http-wrapper.service';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpWrapper } from './http-wrapper.service';
     HomeComponent,
     NavbarComponent,
     StatePickerComponent,
+    HelpComponent,
   ],
   imports: [
     AppRoutingModule,
