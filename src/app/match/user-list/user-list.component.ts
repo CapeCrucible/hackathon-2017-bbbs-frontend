@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class UserListComponent implements OnInit {
   @Input('users') list: Observable<UserAccount[]>;
-  @Output('userSelected') userSelected: EventEmitter<number>;
+  @Output('userSelected') userSelected: EventEmitter<UserAccount>;
 
   constructor() {
     this.userSelected = new EventEmitter();
@@ -19,6 +19,6 @@ export class UserListComponent implements OnInit {
   }
 
   select(item: UserAccount) {
-    this.userSelected.emit(item.id);
+    this.userSelected.emit(item);
   }
 }

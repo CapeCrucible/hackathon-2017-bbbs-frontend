@@ -24,7 +24,7 @@ html, body {
 }
 
 .clickable {
-  filter: brightness(85%);
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
