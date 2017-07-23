@@ -4,7 +4,7 @@ import { HttpWrapper } from '../http-wrapper.service';
 import { environment } from '../../environments/environment';
 import { RegisterAccountRequest } from './register-account.request';
 import { UserType } from '../user/user-type.enum';
-import { getCode } from "../forms/state-picker/state.model";
+import { getCode } from '../forms/state-picker/state.model';
 
 @Component({
   selector: 'app-register',
@@ -56,20 +56,15 @@ export class RegisterComponent implements OnInit {
         zipCode: this.regForm.controls['zipCode'].value
       },
       contactInfo: {
-        userId: 1234, // This shouldn't be required but for some reason it is
+        // userId: 1234, // This shouldn't be required but for some reason it is
         email: this.regForm.controls['email'].value,
-        phoneNumber: '5551234567'
+        phoneNumber: '555-123-4567'
       },
       interests: [
-        {
-          title: 'Skateboarding'
-        },
-        {
-          title: 'Basketball'
-        }
       ]
     };
 
     this.http.post(this.baseUrl + 'CreateConsolidatedUser', request);
+    console.log(this.baseUrl + 'CreateConsolidatedUser', request);
   }
 }
