@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         password: this.regForm.controls['password'].value,
         firstName: this.regForm.controls['firstName'].value,
         lastName: this.regForm.controls['lastName'].value,
-        userType: UserType.Little
+        userTypeId: UserType.Little
       },
       address: {
         streetLine1: this.regForm.controls['streetLine1'].value,
@@ -59,7 +59,6 @@ export class RegisterComponent implements OnInit {
       interests: []
     };
 
-    this.http.post(this.baseUrl + 'CreateConsolidatedUser', request).subscribe();
-    console.log(this.baseUrl + 'CreateConsolidatedUser', request);
+    this.http.post(this.baseUrl + 'User/CreateConsolidatedUser', request).subscribe();
   }
 }

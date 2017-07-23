@@ -5,5 +5,5 @@ export interface UserAccount {
   password: string;
   firstName: string;
   lastName: string;
-  userType: UserType;
+  userTypeId: UserType;
 }
