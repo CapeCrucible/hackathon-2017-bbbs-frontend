@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConsolidatedUserInfo } from '../consolidated-user-info.model';
+import { UserType } from '../user-type.enum';
 
 @Component({
   selector: 'app-user-details',
@@ -14,9 +15,4 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  generateColors() {
-      return Math.floor(Math.random() * 16777215).toString(16);
-  }
-
 }
