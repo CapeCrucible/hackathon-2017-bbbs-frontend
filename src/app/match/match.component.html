@@ -20,34 +20,36 @@
       </span>
       <span></span>
     </md-card-title>
-    <img md-card-image src="http://via.placeholder.com/400">
+    <md-card-content>
+      <div class="split-container">
+        <div class="split-container-item">
+          <img src="http://via.placeholder.com/400" class="little-match-image">
+          <span>{{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName }}</span>
+        </div>
+        <div class="split-container-item">
+          <img src="http://via.placeholder.com/400" class="little-match-image">
+          <span>{{ selectedLittleParent?.user?.firstName }} {{ selectedLittleParent?.user?.lastName }}</span>
+        </div>
+      </div>
+    </md-card-content>
     <md-card-content>
       <h3>Interests</h3>
-      <p>
-        <span *ngFor="let interest of selectedLittle.interests; let i = index">
-          {{ interest.interestName }}{{ (i != selectedLittle.interests.length - 1) ? ',' : '' }}
-        </span>
-        <em *ngIf="selectedLittle.interests === null || selectedLittle.interests.length === 0">No interests provided</em>
-      </p>
-      <h3>Little Contact Information</h3>
-      <p>Email: {{ selectedLittle.contactInfo?.email }}</p>
-      <p>Phone Number: {{ selectedLittle.contactInfo?.phoneNumber }}</p>
-      <p *ngIf="selectedLittle.address">
-        {{ selectedLittle.address?.streetLine1 }}<br>
-        {{ selectedLittle.address?.streetLine2 }}<br *ngIf="selectedLittle.address?.streetLine2">
-        {{ selectedLittle.address?.city }}, {{ selectedLittle.address?.state }} {{ selectedLittle.address?.zipCode }}
-      </p>
-      <h3>Parent Contact Information</h3>
-      <div *ngIf="selectedLittleParent">
-        <p>Name: {{ selectedLittleParent.user?.firstName }} {{ selectedLittleParent.user?.lastName }}</p>
-        <p>Email: {{ selectedLittleParent.contactInfo?.email }}</p>
-        <p>Phone Number: {{ selectedLittleParent.contactInfo?.phoneNumber }}</p>
-        <p *ngIf="selectedLittleParent.address">
-          {{ selectedLittleParent.address?.streetLine1 }}<br>
-          {{ selectedLittleParent.address?.streetLine2 }}<br *ngIf="selectedLittleParent.address?.streetLine2">
-          {{ selectedLittleParent.address?.city }}, {{ selectedLittleParent.address?.state }} {{
-          selectedLittleParent.address?.zipCode }}
-        </p>
+      <app-interest-list [interests]="selectedLittle.interests"></app-interest-list>
+    </md-card-content>
+    <md-card-content>
+      <div class="split-container">
+        <div class="split-container-item">
+          <h3>Little Contact Information</h3>
+          <app-contact-info [user]="selectedLittle.user"
+                            [contactInfo]="selectedLittle.contactInfo"></app-contact-info>
+          <app-address [address]="selectedLittle.address"></app-address>
+        </div>
+        <div class="split-container-item">
+          <h3>Parent Contact Information</h3>
+          <app-contact-info [user]="selectedLittleParent?.user"
+                            [contactInfo]="selectedLittleParent?.contactInfo"></app-contact-info>
+          <app-address [address]="selectedLittleParent?.address"></app-address>
+        </div>
       </div>
     </md-card-content>
   </md-card>
@@ -73,24 +75,25 @@
       </span>
       <span></span>
     </md-card-title>
-    <img md-card-image src="http://via.placeholder.com/400">
+    <md-card-content>
+      <div class="big-container">
+        <div class="big-container-item">
+          <img src="http://via.placeholder.com/400" class="big-match-image"><br>
+          <span>{{ selectedBig.user.firstName }} {{ selectedBig.user.lastName }}</span>
+        </div>
+      </div>
+    </md-card-content>
     <md-card-content>
       <h3>Interests</h3>
-      <p>
-        <span *ngFor="let interest of selectedBig.interests; let i = index">
-          {{ interest.interestName }}{{ (i != selectedBig.interests.length - 1) ? ',' : '' }}
-        </span>
-        <em *ngIf="selectedBig.interests === null || selectedBig.interests.length === 0">No interests provided</em>
-      </p>
-      <h3>Contact Information</h3>
-      <p>Email: {{ selectedBig.contactInfo?.email }}</p>
-      <p>Phone Number: {{ selectedBig.contactInfo?.phoneNumber }}</p>
-      <p *ngIf="selectedBig .address">
-        {{ selectedBig.address?.streetLine1 }}<br>
-        {{ selectedBig.address?.streetLine2 }}<br *ngIf="selectedBig.address?.streetLine2">
-        {{ selectedBig.address?.city }}, {{ selectedBig.address?.state }} {{ selectedBig.address?.zipCode }}
-      </p>
+      <app-interest-list [interests]="selectedBig.interests"></app-interest-list>
+      <h3>Big Contact Information</h3>
+      <app-contact-info [user]="selectedBig.user" [contactInfo]="selectedBig.contactInfo"></app-contact-info>
+      <app-address [address]="selectedBig.address"></app-address>
     </md-card-content>
   </md-card>
 </div>
-<button md-raised-button *ngIf="selectedLittle && selectedBig" style="width: 100%; margin-top: 2em;" (click)="createMatch()">Create Match!</button>
+
+
+<button md-raised-button *ngIf="selectedLittle && selectedBig" style="width: 100%; margin-top: 2em;"
+        (click)="createMatch()">Create Match!
+</button>

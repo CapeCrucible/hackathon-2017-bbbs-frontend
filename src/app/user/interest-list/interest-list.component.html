@@ -1,0 +1,6 @@
+<p *ngIf="interests">
+  <span *ngFor="let interest of interests; let i = index">
+        {{ interest.interestName }}{{ (i != interests.length - 1) ? ',' : '' }}
+  </span>
+  <em *ngIf="interests === null || interests.length === 0">No interests provided</em>
+</p>

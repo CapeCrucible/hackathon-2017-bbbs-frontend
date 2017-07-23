@@ -27,6 +27,9 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
 import { UserListComponent } from './match/user-list/user-list.component';
 import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
+import { AddressComponent } from './user/address/address.component';
+import { ContactInfoComponent } from './user/contact-info/contact-info.component';
+import { InterestListComponent } from './user/interest-list/interest-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { CommonModule } from '@angular/common';
     MatchComponent,
     UserListComponent,
     UserDetailsComponent,
+    AddressComponent,
+    ContactInfoComponent,
+    InterestListComponent,
   ],
   imports: [
     AppRoutingModule,
