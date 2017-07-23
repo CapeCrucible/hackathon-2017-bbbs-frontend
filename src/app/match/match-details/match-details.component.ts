@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpWrapper } from '../../http-wrapper.service';
 import { MatchDetails } from './match-details.model';
 import { environment } from '../../../environments/environment';
@@ -13,7 +13,7 @@ export class MatchDetailsComponent implements OnInit {
   private baseUrl: string;
   match: MatchDetails;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpWrapper) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpWrapper) {
     this.baseUrl = environment.apiUrl;
   }
 
@@ -33,7 +33,8 @@ export class MatchDetailsComponent implements OnInit {
     }
 
     this.http
-      .get(this.baseUrl + 'UserMappping/DeleteMatchById/' + this.match.matchId)
-      .subscribe();
+      .get(this.baseUrl + 'UserMapping/DeleteMatchById/' + this.match.matchId)
+      .subscribe()
+      .add(() => this.router.navigate(['/matches']));
   }
 }
