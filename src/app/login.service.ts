@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { UserAccount } from './user/user-account.model';
 import { environment } from './../environments/environment';
-import { LoginRequest } from './home/login.request';
 import { HttpWrapper } from './http-wrapper.service';
+import { LoginRequest } from './login.request';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
@@ -15,12 +16,14 @@ export class LoginService {
     this.baseUrl = environment.apiUrl;
    }
 
-  login(request: LoginRequest) {
+  login(router: Router, request: LoginRequest, callback: Function) {
     this.http.post<UserAccount>(this.baseUrl + 'Login/Login', request)
-      .subscribe(reply => this.user = reply);
+      .subscribe(reply => {
+        this.user = reply;
+        callback(router, reply);
+      });
 
     console.log(this.baseUrl + 'Login/Login', request);
-    console.log(!!this.user ? 'Logged In' : 'Login Failed');
   }
 
   logout() {

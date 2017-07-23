@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { LoginRequest } from './login.request';
 import { UserAccount } from '../user/user-account.model';
 import { LoginService } from '../login.service';
+import { LoginRequest } from '../login.request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.loginService = loginService;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -29,11 +32,14 @@ export class HomeComponent implements OnInit {
 
   login() {
     const request: LoginRequest = {
-      loginCredentials: {
         username: this.loginForm.controls['username'].value,
         password: this.loginForm.controls['password'].value
-      }
     };
-    this.loginService.login(request);
+    this.loginService.login(this.router, request, this.loginCallback);
+  }
+
+  loginCallback(router, user: UserAccount) {
+    console.log(user);
+    router.navigate(['user-details', user]);
   }
 }

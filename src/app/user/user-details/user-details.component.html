@@ -7,35 +7,35 @@
         <md-list-item>
           <p>
             <strong> Name: &nbsp;</strong>
-            {{ user?.user.firstName }} {{ user?.user.lastName }}
+            {{ consolidatedUser?.user.firstName }} {{ consolidatedUser?.user.lastName }}
           </p>
         </md-list-item>
 
         <md-list-item>
           <p>
             <strong> Username: &nbsp;</strong>
-            {{ user?.user.username }}
+            {{consolidatedUseruser?.user.username }}
           </p>
         </md-list-item>
 
         <md-list-item>
           <p>
             <strong> Email: &nbsp;</strong>
-            {{ user?.contactInfo.email }}
+            {{ consolidatedUser?.contactInfo.email }}
           </p>
         </md-list-item>
 
         <md-list-item>
           <p>
             <strong> Phone Number: &nbsp;</strong>
-            {{ user?.contactInfo.phoneNumber }}
+            {{ consolidatedUser?.contactInfo.phoneNumber }}
           </p>
         </md-list-item>
 
         <md-list-item>
           <p>
             <strong> Address: &nbsp;</strong>
-            <app-address [address]="user?.address"></app-address>
+            <app-address [address]="consolidatedUser?.address"></app-address>
           </p>
         </md-list-item>
 
@@ -43,7 +43,7 @@
 
         <h3 md-subheader>Interests</h3>
         <md-list-item>
-      <app-interest-list [interests]="user?.interests"></app-interest-list>
+      <app-interest-list [interests]="consolidatedUser?.interests"></app-interest-list>
         </md-list-item>
       </md-list>
     </md-card-content>
