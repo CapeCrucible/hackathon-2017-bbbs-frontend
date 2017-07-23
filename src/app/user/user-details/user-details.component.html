@@ -42,8 +42,8 @@
         <md-divider></md-divider>
 
         <h3 md-subheader>Interests</h3>
-        <md-list-item *ngFor="let interest of user?.interests">
-          <strong md-line class="interest">{{ interest }}</strong>
+        <md-list-item>
+      <app-interest-list [interests]="user?.interests"></app-interest-list>
         </md-list-item>
       </md-list>
     </md-card-content>
