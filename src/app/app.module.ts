@@ -23,6 +23,7 @@ import { StatePickerComponent } from './forms/state-picker/state-picker.componen
 import { HttpWrapper } from './http-wrapper.service';
 import { HelpComponent } from './help/help.component';
 import { MatchComponent } from './match/match.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserListComponent } from './match/user-list/user-list.component';
 import { CommonModule } from '@angular/common';
 
@@ -36,6 +37,7 @@ import { CommonModule } from '@angular/common';
     HelpComponent,
     MatchComponent,
     UserListComponent,
+    UserDetailsComponent,
   ],
   imports: [
     AppRoutingModule,

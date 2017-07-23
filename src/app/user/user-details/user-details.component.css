@@ -1,0 +1,21 @@
+md-list-item {
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.indent1 {
+    margin-left: 40px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.interest {
+    padding: 10px;
+    font-size: 16px;
+    background-color: lightblue;
+    border-radius: 20px;
+}

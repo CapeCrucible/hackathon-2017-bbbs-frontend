@@ -1,21 +1,54 @@
 <div class="split-container">
     <md-card>
-        <md-card-title>Details</md-card-title>
+        <md-card-title>User Details</md-card-title>
         <md-card-content>
             <md-list>
-            <h3 md-subheader>Contact Info</h3>
-            <md-list-item>
-                <i class="material-icons">email</i>
-                <label md-line>Email: </label>
-                <p md-line> someone.com </p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Interests</h3>
-            <md-list-item *ngFor="let note of notes">
-                <md-icon md-list-icon>note</md-icon>
-                <h4 md-line>{{note.name}}</h4>
-                <p md-line> {{note.updated | date}} </p>
-            </md-list-item>
+                <h3 md-subheader>Contact Info</h3>
+                <md-list-item>
+                    <p>
+                        <strong> Name: &nbsp;</strong>
+                        {{ user.user.firstName }} &nbsp; {{ user.user.firstName }}
+                    </p>
+                </md-list-item>
+
+                <md-list-item>
+                    <p>
+                        <strong> Username: &nbsp;</strong>
+                        {{ user.user.username }}
+                    </p>
+                </md-list-item>
+
+                <md-list-item>
+                    <p>
+                        <strong> Email: &nbsp;</strong>
+                        {{ user.contactInfo.email}}
+                    </p>
+                </md-list-item>
+
+                <md-list-item>
+                    <p>
+                        <strong> Phone Number: &nbsp;</strong>
+                        {{ user.contactInfo.phoneNumber}}
+                    </p>
+                </md-list-item>
+
+                <md-list-item>
+                    <p>
+                        <strong> Address: &nbsp;</strong>
+                        {{ user.address.addressLine1 }} &nbsp;
+                        {{ user.address.addressLine2 }} &nbsp;
+                        {{ user.address.city }} &nbsp;
+                        {{ user.address.state }} , &nbsp;
+                        {{ user.address.zipCode }}
+                    </p>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <h3 md-subheader>Interests</h3>
+                <md-list-item>
+                    <strong md-line class="interest">Placeholder</strong>
+                </md-list-item>
             </md-list>
         </md-card-content>
     </md-card>

@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpWrapper } from '../http-wrapper.service';
-import { UserAccount } from '../user/user-account.model';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConsolidatedUserInfo } from './../consolidated-user-info.model';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './match.component.html',
-  styleUrls: ['./match.component.scss']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.css']
 })
-export class MatchComponent implements OnInit {
-  users: Subject<UserAccount[]>;
 
-  constructor(private httpWrapper: HttpWrapper) {
-    this.bigs = new ReplaySubject(1);
-  }
+export class UserDetailsComponent implements OnInit {
+    @Input('user') user: ConsolidatedUserInfo;
+    constructor() {
+    }
 
   ngOnInit() {
-    this.httpWrapper
-      .get<UserAccount[]>('UserMapping/FindUnmatchedBigs')
-      .subscribe(bigs => this.bigs.next(bigs));
+  }
+
+  generateColors() {
+      return Math.floor(Math.random() * 16777215).toString(16);
   }
 
 }
