@@ -5,7 +5,8 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "startserver": "ng serve --host bbbsweb.capecrucible.org --port 8080 --disableHostCheck",
+        "startserverprod": "ng serve --host bbbsweb.capecrucible.org --port 8080 --disableHostCheck --prod",
+        "buildprod": "ng build --prod",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
