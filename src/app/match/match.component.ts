@@ -57,4 +57,13 @@ export class MatchComponent implements OnInit {
   deselectBig() {
     this.selectedBig = null;
   }
+
+  createMatch() {
+    const request: any = {
+      littleId: this.selectedLittle.user.id,
+      bigId: this.selectedBig.user.id
+    };
+
+    this.httpWrapper.post(this.baseUrl + 'UserMapping/CreateBigLittleParentMap', request).subscribe();
+  }
 }
