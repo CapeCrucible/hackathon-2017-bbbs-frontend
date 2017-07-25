@@ -5,8 +5,8 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "startserverprod": "ng serve --host 0.0.0.0 --port 8080 --disableHostCheck --prod",
-        "buildprod": "ng build --prod",
+        "startserverprod": "ng serve --host 0.0.0.0 --port 8080 --env=prod",
+        "buildprod": "ng build --env=prod",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
