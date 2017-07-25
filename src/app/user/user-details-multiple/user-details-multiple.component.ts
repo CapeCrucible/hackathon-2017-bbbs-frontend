@@ -13,13 +13,13 @@ import { MatchedBigLittleParentModel } from '../matched-big-little-parent.model'
   styleUrls: ['./user-details-multiple.component.css']
 })
 export class UserDetailsMultipleComponent implements OnInit {
-  private baseUrl: string;
-  private consolidatedParent: ConsolidatedUserInfo;
-  private consolidatedLittle: ConsolidatedUserInfo;
+  public baseUrl: string;
+  public consolidatedParent: ConsolidatedUserInfo;
+  public consolidatedLittle: ConsolidatedUserInfo;
 
   constructor(
-    private http: HttpWrapper,
-    private activatedRoute: ActivatedRoute
+    public http: HttpWrapper,
+    public activatedRoute: ActivatedRoute
   ) {
     this.baseUrl = environment.apiUrl;
     this.activatedRoute.params.subscribe((user: UserAccount) => {
