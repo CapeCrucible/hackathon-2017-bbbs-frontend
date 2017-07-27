@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         lastName: this.regForm.controls['lastName'].value,
         age: this.regForm.controls['age'].value,
         userTypeId: UserType.Big,
-        pictureUrl: null
+        pictureUrl: 'https://files.slack.com/files-pri/T133EDMBL-F6DBGLF3Q/guy.png'
       },
       address: {
         streetLine1: this.regForm.controls['streetLine1'].value,
