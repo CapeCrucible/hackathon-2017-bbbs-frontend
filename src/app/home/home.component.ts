@@ -44,6 +44,9 @@ export class HomeComponent implements OnInit {
     if (user.userTypeId === UserType.Big) {
       router.navigate(['user-details-multiple', user]);
     }
+    if (user.userTypeId === UserType.Admin) {
+      router.navigate(['matches', user]);
+    }
     router.navigate(['user-details', user]);
   }
 }
