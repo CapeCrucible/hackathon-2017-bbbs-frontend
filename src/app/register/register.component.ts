@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       statePicker: '',
       zip: '',
     });
-    
+
   }
 
   register() {
@@ -49,7 +49,8 @@ export class RegisterComponent implements OnInit {
         firstName: this.regForm.controls['firstName'].value,
         lastName: this.regForm.controls['lastName'].value,
         age: this.regForm.controls['age'].value,
-        userTypeId: UserType.Big
+        userTypeId: UserType.Big,
+        pictureUrl: null
       },
       address: {
         streetLine1: this.regForm.controls['streetLine1'].value,

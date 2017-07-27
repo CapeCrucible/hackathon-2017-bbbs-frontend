@@ -1,118 +1,110 @@
 <div class="split-container">
-  <button md-raised-button class="full-width" [routerLink]="['/matches']">
+    <button md-raised-button class="full-width" [routerLink]="['/matches']">
     View all Matches
   </button>
 </div>
 
 <div class="split-container" *ngIf="selectedBig && selectedLittle">
-  <button md-raised-button class="full-width" (click)="createMatch()">
+    <button md-raised-button class="full-width" (click)="createMatch()">
     Create Match!
   </button>
 </div>
 
 <div class="split-container">
-  <md-card *ngIf="!selectedLittle">
-    <md-card-title>Select a little</md-card-title>
-    <md-card-content>
-      <app-user-list
-        [users]="littles"
-        (userSelected)="onLittleSelected($event)"
-      ></app-user-list>
-    </md-card-content>
-  </md-card>
+    <md-card *ngIf="!selectedLittle">
+        <md-card-title>Select a little</md-card-title>
+        <md-card-content>
+            <app-user-list [users]="littles" (userSelected)="onLittleSelected($event)"></app-user-list>
+        </md-card-content>
+    </md-card>
 
-  <md-card *ngIf="selectedLittle">
-    <md-card-title>
-      <div class="flex">
-        <span>Little - {{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</span>
-        <span class="fill-remaining-space"></span>
-        <span>
+    <md-card *ngIf="selectedLittle">
+        <md-card-title>
+            <div class="flex">
+                <span>Little - {{ selectedLittle.user.firstName }} {{ selectedLittle.user.lastName}}</span>
+                <span class="fill-remaining-space"></span>
+                <span>
         <button md-button md-mini-fab (click)="deselectLittle()">
           <md-icon>close</md-icon>
         </button>
       </span>
-      </div>
-    </md-card-title>
-    <md-card-content>
-      <div class="split-container">
-        <div class="split-container-item">
-          <img src="http://via.placeholder.com/400" class="little-match-image">
-        </div>
-        <div class="split-container-item">
-          <img src="http://via.placeholder.com/400" class="little-match-image">
-        </div>
-      </div>
-    </md-card-content>
-    <md-card-content>
-      <h3>Interests</h3>
-      <app-interest-list [interests]="selectedLittle.interests"></app-interest-list>
-    </md-card-content>
-    <md-card-content>
-      <div class="split-container">
-        <div class="split-container-item">
-          <h3>Little Contact Information</h3>
-          <app-contact-info [user]="selectedLittle.user"
-                            [contactInfo]="selectedLittle.contactInfo"></app-contact-info>
-          <app-address [address]="selectedLittle.address"></app-address>
-        </div>
-        <div class="split-container-item">
-          <h3>Parent Contact Information</h3>
-          <app-contact-info [user]="selectedLittleParent?.user"
-                            [contactInfo]="selectedLittleParent?.contactInfo"></app-contact-info>
-          <app-address [address]="selectedLittleParent?.address"></app-address>
-        </div>
-      </div>
-    </md-card-content>
-  </md-card>
+            </div>
+        </md-card-title>
+        <md-card-content>
+            <div class="split-container">
+                <div class="split-container-item">
+                    <img src="{{selectedLittle?.user?.pictureUrl}}" class="little-match-image">
+                </div>
+                <div class="split-container-item">
+                    <img src="{{selectedLittleParent?.user?.pictureUrl}}" class="little-match-image">
+                </div>
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <h3>Interests</h3>
+            <app-interest-list [interests]="selectedLittle.interests"></app-interest-list>
+        </md-card-content>
+        <md-card-content>
+            <div class="split-container">
+                <div class="split-container-item">
+                    <h3>Little Contact Information</h3>
+                    <app-contact-info [user]="selectedLittle.user" [contactInfo]="selectedLittle.contactInfo"></app-contact-info>
+                    <app-address [address]="selectedLittle.address"></app-address>
+                </div>
+                <div class="split-container-item">
+                    <h3>Parent Contact Information</h3>
+                    <app-contact-info [user]="selectedLittleParent?.user" [contactInfo]="selectedLittleParent?.contactInfo"></app-contact-info>
+                    <app-address [address]="selectedLittleParent?.address"></app-address>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
 
-  <md-card *ngIf="!selectedBig">
-    <md-card-title>Select a big</md-card-title>
-    <md-card-content>
-      <app-user-list
-        [users]="bigs"
-        (userSelected)="onBigSelected($event)"
-      ></app-user-list>
-    </md-card-content>
-  </md-card>
+    <md-card *ngIf="!selectedBig">
+        <md-card-title>Select a big</md-card-title>
+        <md-card-content>
+            <app-user-list [users]="bigs" (userSelected)="onBigSelected($event)"></app-user-list>
+        </md-card-content>
+    </md-card>
 
-  <md-card *ngIf="selectedBig">
-    <md-card-title class="flex">
-      <div class="flex">
-        <span>Big - {{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</span>
-        <span class="fill-remaining-space"></span>
-        <span>
+    <md-card *ngIf="selectedBig">
+        <md-card-title class="flex">
+            <div class="flex">
+                <span>Big - {{ selectedBig.user.firstName }} {{ selectedBig.user.lastName}}</span>
+                <span class="fill-remaining-space"></span>
+                <span>
         <button md-button md-mini-fab (click)="deselectBig()">
           <md-icon>close</md-icon>
         </button>
       </span>
-      </div>
-    </md-card-title>
-    <md-card-content>
-      <div class="big-container">
-        <div class="big-container-item">
-          <img src="http://via.placeholder.com/400" class="big-match-image"><br>
-        </div>
-      </div>
-    </md-card-content>
-    <md-card-content>
-      <h3>Interests</h3>
-      <app-interest-list [interests]="selectedBig.interests"></app-interest-list>
-      <h3>Big Contact Information</h3>
-      <app-contact-info [user]="selectedBig.user" [contactInfo]="selectedBig.contactInfo"></app-contact-info>
-      <app-address [address]="selectedBig.address"></app-address>
-    </md-card-content>
-  </md-card>
+            </div>
+        </md-card-title>
+        <md-card-content>
+            <div class="big-container">
+                <div class="big-container-item">
+                    <img src="{{selectedBig.user.pictureUrl}}" class="big-match-image"><br>
+                </div>
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <h3>Interests</h3>
+            <app-interest-list [interests]="selectedBig.interests"></app-interest-list>
+            <h3>Big Contact Information</h3>
+            <app-contact-info [user]="selectedBig.user" [contactInfo]="selectedBig.contactInfo"></app-contact-info>
+            <app-address [address]="selectedBig.address"></app-address>
+        </md-card-content>
+    </md-card>
 </div>
 
 <div class="split-container" *ngIf="selectedBig && selectedLittle">
-  <md-card>
-    <h3>Shared Interests</h3>
-    <app-interest-list [interests]="sharedInterests"></app-interest-list>
-  </md-card>
+    <md-card>
+        <h3>Shared Interests</h3>
+        <app-interest-list [interests]="sharedInterests"></app-interest-list>
+    </md-card>
 </div>
 
 <div class="split-container" *ngIf="selectedBig && selectedLittle">
-  <button md-raised-button class="full-width" (click)="createMatch()">
+    <button md-raised-button class="full-width" (click)="createMatch()">
     Create Match!
   </button>
 </div>

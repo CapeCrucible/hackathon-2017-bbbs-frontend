@@ -7,4 +7,5 @@ export interface UserAccount {
   lastName: string;
   age: number;
   userTypeId: UserType;
+  pictureUrl: string;
 }

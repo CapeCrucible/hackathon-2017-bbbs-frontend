@@ -5,6 +5,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { environment } from '../../../environments/environment';
 import { ConsolidatedUserInfo } from '../../user/consolidated-user-info.model';
 import { Interest } from '../../user/interest.model';
+import { ParentLittleModel } from './ParentLittleModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,9 +22,11 @@ export class CreateMatchComponent implements OnInit {
   selectedLittle: ConsolidatedUserInfo;
   selectedLittleParent: ConsolidatedUserInfo;
 
+  parentLittle: ParentLittleModel;
+
   sharedInterests: Interest[];
 
-  constructor(private httpWrapper: HttpWrapper, private router: Router) {
+  constructor(private httpWrapper: HttpWrapper, private router: Router, ) {
     this.baseUrl = environment.apiUrl;
     this.bigs = new ReplaySubject(1);
     this.littles = new ReplaySubject(1);
@@ -47,16 +50,39 @@ export class CreateMatchComponent implements OnInit {
       });
   }
 
+
   onLittleSelected(user: UserAccount): void {
+    /*this.httpWrapper
+      .get<ParentLittleModel>(this.baseUrl + 'User/GetParentLittleModel?littleId=' + user.id)
+      .subscribe(info => {
+        const parentLittle: ParentLittleModel = info;
+        this.selectedLittle = parentLittle.Little; // info.Little as ConsolidatedUserInfo;
+        this.selectedLittleParent = parentLittle.Parent; // info.Parent as ConsolidatedUserInfo;
+        console.log(info);
+        console.log(parentLittle.Little);
+        console.log(parentLittle.Parent);
+        console.log(this.selectedLittle);
+        console.log(this.selectedLittleParent);
+        this.loadSharedInterests();
+      });*/
+
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'User/GetConsolidatedUserInfo/' + user.id)
       .subscribe(info => {
         this.selectedLittle = info;
+        console.log('INFO' + info);
         this.loadSharedInterests();
       });
+
+    console.log(this.selectedLittle);
     this.httpWrapper
       .get<ConsolidatedUserInfo>(this.baseUrl + 'UserMapping/FindParentForLittle/' + user.id)
-      .subscribe(info => this.selectedLittleParent = info);
+      .subscribe(pinfo => {
+        console.log('PINFO' + pinfo);
+        console.log(this);
+        this.selectedLittleParent = pinfo;
+      });
+    console.log(this.selectedLittleParent);
   }
 
   deselectLittle() {
@@ -80,14 +106,14 @@ export class CreateMatchComponent implements OnInit {
   }
 
   loadSharedInterests() {
-    if (!this.selectedBig && !this.selectedLittle) {
+    if (!this.selectedBig || !this.selectedLittle) {
       this.sharedInterests = [];
       return;
     }
 
     this.httpWrapper
       .get<Interest[]>(this.baseUrl + 'Interest/GetSharedInterests/'
-        + this.selectedBig.user.id + '/' + this.selectedLittle.user.id)
+      + this.selectedBig.user.id + '/' + this.selectedLittle.user.id)
       .subscribe(interests => this.sharedInterests = interests);
   }
 }
