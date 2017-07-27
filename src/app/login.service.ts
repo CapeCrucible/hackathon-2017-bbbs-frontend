@@ -14,7 +14,7 @@ export class LoginService {
     private http: HttpWrapper,
   ) {
     this.baseUrl = environment.apiUrl;
-   }
+  }
 
   login(router: Router, request: LoginRequest, callback: Function) {
     this.http.post<UserAccount>(this.baseUrl + 'Login/Login', request)

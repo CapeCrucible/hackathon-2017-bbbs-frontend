@@ -43,10 +43,13 @@ export class HomeComponent implements OnInit {
     console.log(user);
     if (user.userTypeId === UserType.Big) {
       router.navigate(['user-details-multiple', user]);
+      return;
     }
     if (user.userTypeId === UserType.Admin) {
-      router.navigate(['matches', user]);
+      router.navigate(['matches']);
+      return;
     }
     router.navigate(['user-details', user]);
+    return;
   }
 }
